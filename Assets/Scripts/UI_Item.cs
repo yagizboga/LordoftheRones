@@ -19,4 +19,14 @@ public class UI_Item : MonoBehaviour
         }
         image.sprite = newItem.GetSprite();
     }
+    public Item GetItem(){
+        if(item!=null){
+            return item;
+        }
+        else{
+            Debug.LogError("Item is Null! Please Invoke SetItem Function.");
+            return null;
+        }
+        
+    }
 }
