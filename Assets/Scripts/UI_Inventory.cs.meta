@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 1f6cc2086fbd1e7468686d40a7a63055
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pfUI_Item: {fileID: 2576596606220671987, guid: 822eb77a2d090704b84564500d7b1cfd, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

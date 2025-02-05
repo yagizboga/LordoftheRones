@@ -22,4 +22,10 @@ public class InventorySlot : MonoBehaviour,IDropHandler
         }
         
     }
+    public bool IsEmpty(){
+        if(transform.childCount == 0){
+            return true;
+        }
+        return false;
+    }
 }
