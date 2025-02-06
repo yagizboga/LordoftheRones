@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - InventoryPanel
+  - CraftingPanel
   layers:
   - Default
   - TransparentFX

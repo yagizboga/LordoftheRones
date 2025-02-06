@@ -8,12 +8,11 @@ public class testing : MonoBehaviour
     Item carrot;
     void Start()
     {
+        craftingSystem = GameObject.FindGameObjectWithTag("CraftingPanel").GetComponent<CraftingSystem>();
         uI_Inventory = GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<UI_Inventory>();
         banana = new Item(Item.itemType.banana);
         carrot = new Item(Item.itemType.carrot);
-        craftingSystem = new CraftingSystem();
-        //craftingSystem.SetItem(carrot,0,0);
-        //Debug.Log(craftingSystem.GetItem(0,0) + " " + item.GetName());
+        craftingSystem.UpdateGridSize(4);
 
         uI_Inventory.AddItemToInventory(banana);
         uI_Inventory.AddItemToInventory(carrot);

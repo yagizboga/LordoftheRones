@@ -1,50 +1,37 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CraftingSystem
+public class CraftingSystem: MonoBehaviour
 {
-    private Item[,] itemArray;
-    private int gridSize = 2;
-    public CraftingSystem(){
-        itemArray = new Item[gridSize,gridSize];
+    const int MAX_CRAFTING_GRID_SIZE = 16;
+    Transform [] craftingPanelArray;
+    int gridSize = 4;
+    GridLayoutGroup gridLayoutGroup;
+    
+    enum itemRecipe{
+        bananawith2carrot,
+        carrotwith2banana
     }
-    private bool IsEmpty(int x,int y){
-        if(itemArray[x,y] != null){
-            return false;
-        }
-        return true;
+    void Awake(){
+        craftingPanelArray = new Transform[MAX_CRAFTING_GRID_SIZE];
+        gridLayoutGroup = GetComponent<GridLayoutGroup>();
     }
-    public Item GetItem(int x,int y){
-        return itemArray[x,y];
-    }
-    public void SetItem(Item item,int x,int y){
-        itemArray[x,y] = item;
-    }
-    private void IncreaseItemAmount(int x,int y){
-        itemArray[x,y].SetAmount(1);
-    }
-    private void DecreaseItemAmount(int x,int y){
-        itemArray[x,y].SetAmount(-1);
-    }
-    private void RemoveItem(int x,int y){
-        SetItem(null,x,y);
-    }
-    public int GetGridSize(){
-        return gridSize;
-    }
-    private bool TryAddItem(Item item,int x,int y){
-        if(IsEmpty(x,y)){
-            SetItem(item,x,y);
-            return true;
-        }
-        else{
-            if(item.GetType() == GetItem(x,y).GetType()){
-                IncreaseItemAmount(x,y);
-                return true;
+
+    public void UpdateGridSize(int size){
+        gridLayoutGroup.constraintCount = (int)Mathf.Sqrt(size);
+        gridSize = size;
+        for(int i = 0;i<MAX_CRAFTING_GRID_SIZE;i++){
+            craftingPanelArray[i] = transform.Find("CraftingSlot"+ i);
+            if(i >= gridSize){
+                craftingPanelArray[i].gameObject.SetActive(false);
             }
-            else{
-                return false;
-            }
-            
+            Debug.Log(craftingPanelArray[i]);
         }
     }
+
+    public void CheckRecipe(){
+
+    }
+
 }
